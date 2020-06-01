@@ -7,8 +7,8 @@ pip install reuirement.txt
 python run.py
 ```
 
-API for Regist  demo:
-[POST] http://127.0.0.1:5000/admin/register 
+API for Regist  demo:  
+[POST] http://127.0.0.1:5000/admin/register  
 ```
 {
     "project_id":"demo",
@@ -16,12 +16,12 @@ API for Regist  demo:
     "sandbox_abs_dir":"This currently does noting"
 }
 ```
-API for Unregist demo:
-[POST] http://127.0.0.1:5000/admin/unregister 
+API for Unregist demo:  
+[POST] http://127.0.0.1:5000/admin/unregister  
 ```
 {
     "sandbox_id":"demo"
 }
 ```
-Demo's swagger UI:
+Demo's swagger UI:  
 http://127.0.0.1:5000/api/demo/demo
