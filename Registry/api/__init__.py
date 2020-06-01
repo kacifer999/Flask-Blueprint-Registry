@@ -29,10 +29,10 @@ api.add_namespace(ns_unregister)
 @ns_unregister.route('/')
 class UnRegister(Resource):
     def post(self):
-        # try:
+        try:
         result = rm_blueprint(app,request)
-        # except:
-            # return jsonify(status='500',message='Fail to unregister Api, something went wrong')
+        except:
+            return jsonify(status='500',message='Fail to unregister Api, something went wrong')
         return result
 
 ns_inquire = Namespace('inquire')
