@@ -6,7 +6,9 @@ pip install reuirement.txt
 python run.py
 
 API for Regist and Unregist demo:
+
 [POST] http://127.0.0.1:5000/admin/register 
+
 {
     "project_id":"demo",
     "sandbox_id":"demo",
@@ -14,6 +16,7 @@ API for Regist and Unregist demo:
 }
 
 [POST] http://127.0.0.1:5000/admin/unregister 
+
 {
     "sandbox_id":"demo"
 }
