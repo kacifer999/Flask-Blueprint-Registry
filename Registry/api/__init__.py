@@ -30,7 +30,7 @@ api.add_namespace(ns_unregister)
 class UnRegister(Resource):
     def post(self):
         try:
-        result = rm_blueprint(app,request)
+            result = rm_blueprint(app,request)
         except:
             return jsonify(status='500',message='Fail to unregister Api, something went wrong')
         return result
