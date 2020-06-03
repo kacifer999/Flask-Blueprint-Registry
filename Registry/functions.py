@@ -98,7 +98,6 @@ def inquire_blueprint(app):
     return_dict = {}
     bp_list = inquire_blueprint_internal(app)
     return_dict.update({'api_list':bp_list})
-    print(app.blueprints)
     return sucess(return_dict)
 
 # def inquire_blueprint_rm(app,request):
