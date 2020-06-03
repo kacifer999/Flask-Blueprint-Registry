@@ -1,9 +1,15 @@
 # Flask-Blueprint-Registry
 A danimic API registry project based on Flask, supports for register and remove blueprint at runtime.
-
+Reuirement:  
+```
+importlib
+flask
+flask_restplus
+gevent
+werkzeug==0.16.0
+```
 To Start:
 ```
-pip install reuirement.txt
 python run.py
 ```
 
