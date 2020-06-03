@@ -17,10 +17,10 @@ api.add_namespace(ns_register)
 @ns_register.route('')
 class Register(Resource):
     def post(self):
-        # try:
-        result = add_blueprint(app,request)
-        # except:
-            # return jsonify(status='500',message='Fail to register Api, someting went wrong.')
+        try:
+            result = add_blueprint(app,request)
+        except:
+            return jsonify(status='500',message='Fail to register Api, someting went wrong.')
         return result
 
 
