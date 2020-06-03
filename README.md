@@ -13,7 +13,7 @@ To Start:
 python run.py
 ```
 
-API for Regist  demo:  
+API for Register  demo:  
 [POST] http://127.0.0.1:5000/admin/register  
 ```
 {
@@ -22,7 +22,7 @@ API for Regist  demo:
     "sandbox_abs_dir":"This currently does noting"
 }
 ```
-API for Unregist demo:  
+API for Unregister demo:  
 [POST] http://127.0.0.1:5000/admin/unregister  
 ```
 {
@@ -30,4 +30,6 @@ API for Unregist demo:
 }
 ```
 Demo's swagger UI:  
-http://127.0.0.1:5000/api/demo/demo
+http://127.0.0.1:5000/api/demo/demo  
+Registry's admin swagger UI:  
+http://127.0.0.1:5000/admin  
