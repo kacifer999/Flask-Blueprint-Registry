@@ -46,16 +46,16 @@ class Inquire(Resource):
             return jsonify(status='500',message='Fail to inquire Api, someting went wrong.')
         return result
 
-ns_inquire_rm = Namespace('inquire_rm')
-api.add_namespace(ns_inquire_rm)
-@ns_inquire_rm.route('')
-class Inquire_rm(Resource):
-    def post(self):
-        try:
-            result = inquire_blueprint_rm(app,request)
-        except:
-            return jsonify(status='500',message='Fail to inquire Api, someting went wrong.')
-        return result
+# ns_inquire_rm = Namespace('inquire_rm')
+# api.add_namespace(ns_inquire_rm)
+# @ns_inquire_rm.route('')
+# class Inquire_rm(Resource):
+#     def post(self):
+#         try:
+#             result = inquire_blueprint_rm(app,request)
+#         except:
+#             return jsonify(status='500',message='Fail to inquire Api, someting went wrong.')
+#         return result
 
 
 
