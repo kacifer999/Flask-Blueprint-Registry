@@ -49,19 +49,21 @@ def add_blueprint(app,request):
     
     # register
     module = importlib.import_module(sandbox_str)
-    importlib.reload(sys.modules.get(module.blueprint().import_name))
     blueprint = module.blueprint()
+    importlib.reload(sys.modules.get(blueprint.import_name))
+    # print(blueprint.import_name)
+    # print(sys.modules)
+    
     register_app(app,blueprint,api_rel_url)
 
     bp_list = list(app.blueprints.keys())
     if sandbox_id not in bp_list:
         return_dict.update({'message':'Fail to register Api,sandbox_id not in bp_list, someting went wrong.'})
         return fail(return_dict)
-
     return_dict.update({'sandbox_rel_url':api_rel_url})
     del module
     return sucess(return_dict)
-    
+
 
 def rm_blueprint(app,request):
 
@@ -73,15 +75,18 @@ def rm_blueprint(app,request):
         return_dict.update({'message':'Fail to unregister Api, ' + str(blueprint_id) + ' is not running'})
         return fail(return_dict)
 
-    # remove blueprint object form app.blueprints list
-    rm_blueprint_id = app.blueprints.pop(blueprint_id)
-    del rm_blueprint_id
+    # remove blueprint object form app.blueprints list and remove blueprint module from sys.modules
+    rmd_blueprint = app.blueprints.pop(blueprint_id)
+    rmd_blueprint_main = '.'.join(rmd_blueprint.import_name.split('.')[:-1])
+    del rmd_blueprint
+    for mod in list(sys.modules.keys()):
+        if mod.startswith(rmd_blueprint_main):
+            del sys.modules[mod]
 
     # remove blueprint's view function object  app.view_functions dict
     for rm_view_key in list(app.view_functions):
         if rm_view_key.startswith(blueprint_id + '.'):
-            rm_view_id = app.view_functions.pop(rm_view_key)
-            del rm_view_id
+            del app.view_functions[rm_view_key]
 
     # remove routing rules from app.url_map==werkzeug.routing.Map
     [app.url_map._rules_by_endpoint.pop(key) for key in list(app.url_map._rules_by_endpoint) if key.startswith(blueprint_id + '.')]
